@@ -1,0 +1,28 @@
+
+새 프로젝트 생성
+
+1. npm init
+   bower init
+2. .bwoerrc파일 생성 
+{
+	"directory" : "public/components"
+}
+
+추가
+
+3. npm install express --save
+   npm install path --save
+
+
+
+
+angluar에서는
+$scope안에 모든 속성이 들어가있다
+$scope는 각 컨트롤러 안에 $scope가 각각 들어가 있다.
+$scope {
+	user: name
+}
+js에서 사용할때 $scope.user.~
+html에서 사용할때 ng-model
+{{}} - $scope가 생략되었다고 생각하면 됨 
+
