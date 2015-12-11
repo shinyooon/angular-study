@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko" ng-app="book">
+<head>
+	<meta charset="UTF-8">
+	<title>포인트 상점</title>
+	<script src="../components/angular/angular.js"></script>
+	<script src="../js/controllers/book.js"></script>
+	<script src="../js/controllers/bookList.js"></script>
+	<script src="../js/filters/customFilter.js"></script>
+	<link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+	<link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
+</head>
+<body ng-controller="bookCtrl">
+	<div class="navbar navbar-inverser">
+		<a class="navbar-brand" href="#">포인트 상점</a>
+	</div>
+	<div class="panel panel-default row" ng-controller = "bookListCtrl">
+		<div class="col-xs-3">
+			 <a ng-click="selectGrade()" class="btn btn-block btn-default btn-lg">Home</a>
+			  <a ng-repeat="item in data.books | orderBy : '-grade' |  unique:'grade'" ng-click="selectGrade(item)" class="btn btn-block btn-default btn-lg">{{item}}</a>
+		</div>
+		<div class="col-xs-8">
+			<div class="well" ng-repeat="book in data.books | filter:gradeFilterFn">
+				<h3>
+					<strong>{{book.name}}</strong>
+					<span class="pull-right label label-primary">
+						{{book.price | number:0}}원<!--  | price가격을 가져와서  필터적용 (0단위 기준으로 끊음)-->
+					</span>
+					<p class="lead">{{book.grade}}</p>
+				</h3>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

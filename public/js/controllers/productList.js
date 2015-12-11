@@ -7,6 +7,7 @@ angular.module('product') //이미 만들어진 모듈을 사용할때에는  ,[
 	}
 	$scope.categoryFilterFn = function(product){
 		return selectedCategory == null || product.category == selectedCategory;
+
 		/*
 		var selectedCateory = null;
 		var product = { category : 'baseball'}
