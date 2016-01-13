@@ -6,7 +6,7 @@
 */
 
 angular.module('hello',[])
-	.controller('HelloController', function($scope, $filter){
+	.controller('HelloController', function($scope, $filter, $http){ //$http :  ajax를 사용하기 위해
 		$scope.hello = {
 			msg: 'hello'
 		}
@@ -37,5 +37,12 @@ angular.module('hello',[])
 			price : 400
 		}
 		]
+
+		$scope.loadData = function(){
+			$http.get('/hello/data')
+			.success(function(data){
+				$scope.products = data;
+			});
+		}
 
 	});
