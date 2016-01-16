@@ -6,7 +6,7 @@
 */
 
 angular.module('hello',[])
-	.controller('HelloController', function($scope, $filter, $http){ //$http :  ajax를 사용하기 위해
+	.controller('HelloController', function($scope, $filter, $http, $timeout){ //$http :  ajax를 사용하기 위해
 		$scope.hello = {
 			msg: 'hello'
 		}
@@ -43,6 +43,25 @@ angular.module('hello',[])
 			.success(function(data){
 				$scope.products = data;
 			});
+		};
+
+		$scope.result = false;
+		$scope.showQuiz = function(){
+			$scope.result = true;
+			var promiseObj = $timeout(function(){
+				return $scope.answer;
+			}, 3000);
+
+			promiseObj.then(function(input){
+				if(input == 39){
+					$scope.result = true;
+					$scope.msg = "정답!";
+				}else{
+					$scope.result = false;
+					$scope.msg = "틀렸어요!";
+				}
+				$scope.info = "다시 시작하려면 refresh 해주세요."
+			})
 		}
 
 	});
