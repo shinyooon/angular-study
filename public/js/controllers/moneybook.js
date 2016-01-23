@@ -24,14 +24,15 @@ angular.module('moneyBook',[])
 			// angular최신 버전 방식 (국제 표준 방식)
 			//.then(fn, fn) 첫번째 fn 성공했을 때 두번째 fn 실패했을때(서벗단의 오류들)
 	};
-	// $scope.totalMoney = function(){
-	// 	var total = 0
-	//	      records = $scope.records;
-	//	if(angular.isArray(records)){
-	// 		for(var i =0; i<records.length;i++){
-	// 			total += parseInt(records[i].money);
-	// 		}
-	//	}
-	// 	return total;
-	// }
+	 $scope.totalMoney = function(){
+		var sum = 0, records = $scope.records;
+
+		if(angular.isArray(records)){
+			for(var i=0;i<records.length;i++){
+				sum += parseInt(records[i].money);
+			}
+		}
+
+		return sum;
+	}
 });
