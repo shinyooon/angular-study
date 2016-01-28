@@ -1,0 +1,33 @@
+*promise
+
+$q.all([a,b])
+.then(function(){
+	....
+});
+$q.defter();
+defer.promise
+.then(function(){
+
+})
+.then(function(){
+
+})
+a, b를 순차적으로 실행을 시켜놓고 a,b에 대한 결과값이 전부 나왔을 때 then내용을 실행함
+(a가 끝났을때 b를 실행이 되는게 아님)
+$scope.promiseTest = function(number){
+	var defer = $q.defer();
+	defer.promise
+		.then(function(){
+			return $timeout(function(){
+				alert('asyncA');
+			},3000);
+		})
+		.then(function(){
+			return $timeout(function(){
+				alert('asyncB');
+			},1000)
+		})
+		//return을 지우면 비동기 코드가 됨
+
+		defer.resolve();
+};
