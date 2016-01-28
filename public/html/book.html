@@ -16,11 +16,11 @@
 	</div>
 	<div class="panel panel-default row" ng-controller = "bookListCtrl">
 		<div class="col-xs-3">
-			 <a ng-click="selectGrade()" class="btn btn-block btn-default btn-lg">Home</a>
-			  <a ng-repeat="item in data.books | orderBy : '-grade' |  unique:'grade'" ng-click="selectGrade(item)" class="btn btn-block btn-default btn-lg">{{item}}</a>
+			 <a ng-click="selectGrade()" class="btn btn-block  btn-lg btn-default" ng-class="{'btn-active': isActive(item)}">Home</a>
+			  <a ng-repeat="item in data.books | orderBy : '-grade' |  unique:'grade'" ng-click="selectGrade(item)" class="btn btn-block btn-default btn-lg" ng-class="getGradeClass(item)">{{item}}</a>
 		</div>
 		<div class="col-xs-8">
-			<div class="well" ng-repeat="book in data.books | filter:gradeFilterFn">
+			<div class="well" ng-repeat="book in data.books | orderBy : '-grade' | filter:gradeFilterFn | range:selectedPage:pageSize" ng-click="alertInfoFn(book)">
 				<h3>
 					<strong>{{book.name}}</strong>
 					<span class="pull-right label label-primary">
@@ -29,6 +29,11 @@
 					<p class="lead">{{book.grade}}</p>
 				</h3>
 			</div>
+			<dv class="">
+				<a ng-repeat = "page in data.books | filter:gradeFilterFn | pageCount : pageSize" ng-click="selectPage($index+1)" class="btn btn-default" ng-class="getPageClass($index+1)">
+					{{$index+1}}
+				</a>
+			</dv>
 		</div>
 	</div>
 </body>
