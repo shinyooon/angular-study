@@ -9,9 +9,6 @@
 	<script src="../js/filters/customFilter.js"></script>
 	<link href="../components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
 	<link href="../components/bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
-	<style type="text/css">
-		.btn-active {background:#005c0d;color:#fff;}
-	</style>
 </head>
 <body ng-controller="bookCtrl">
 	<div class="navbar navbar-inverser">
@@ -20,10 +17,10 @@
 	<div class="panel panel-default row" ng-controller = "bookListCtrl">
 		<div class="col-xs-3">
 			 <a ng-click="selectGrade()" class="btn btn-block  btn-lg btn-default" ng-class="{'btn-active': isActive(item)}">Home</a>
-			  <a ng-repeat="item in data.books | orderBy : '-grade' |  unique:'grade'" ng-click="selectGrade(item)" class="btn btn-block btn-default btn-lg" ng-class="{'btn-active': isActive(item)}">{{item}}</a>
+			  <a ng-repeat="item in data.books | orderBy : '-grade' |  unique:'grade'" ng-click="selectGrade(item)" class="btn btn-block btn-default btn-lg" ng-class="getGradeClass(item)">{{item}}</a>
 		</div>
 		<div class="col-xs-8">
-			<div class="well" ng-repeat="book in data.books | orderBy : '-grade' | filter:gradeFilterFn" ng-click="alertInfoFn(book)">
+			<div class="well" ng-repeat="book in data.books | orderBy : '-grade' | filter:gradeFilterFn | range:selectedPage:pageSize" ng-click="alertInfoFn(book)">
 				<h3>
 					<strong>{{book.name}}</strong>
 					<span class="pull-right label label-primary">
@@ -33,7 +30,9 @@
 				</h3>
 			</div>
 			<dv class="">
-				<a class="btn btn-lg btn-default">1</a>
+				<a ng-repeat = "page in data.books | filter:gradeFilterFn | pageCount : pageSize" ng-click="selectPage($index+1)" class="btn btn-default" ng-class="getPageClass($index+1)">
+					{{$index+1}}
+				</a>
 			</dv>
 		</div>
 	</div>
