@@ -1,0 +1,23 @@
+directive (지시자)
+.directive('ngInitFocus',function(){});
+
+- 네이밍 작성방법
+camelcase
+단어별로 첫글자는 대문자로 작성
+ex ) js : ngInitFocus >> html : ng-init-focus, ngRepet >> ng-repeat
+
+
+jqLite
+-jquery의 lite버전
+-angular에서는 jqLite를 기본적으로 제공해줌
+
+
+autofocus 
+: 페이지 로딩시 시정한 input태그에 focus(html5속성)
+
+
+js관리
+-기능별 관리
+-서비스별 관리: 서비스 이름으로 폴더를 만들고 관련 js는 모두 그안에.
+
+
