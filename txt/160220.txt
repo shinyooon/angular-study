@@ -1,0 +1,7 @@
+*라우트
+
+설치
+- bower install angular-route --save
+
+$routeProvider			//route를 제공하는데 조건별로 분기해주는
+<ng-view></ng-view>내에 해당 페이지를 불러옴
