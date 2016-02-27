@@ -67,5 +67,6 @@ app.get('/example', function(req, res){
 	res.sendFile(path.join(__dirname + '/public/html/example.html'));
 });
 
-app.listen(8080);
-console.log('Express Listening on port 8080...');
+app.listen(process.env.PORT || 8080, function(){
+	console.log('Express Listening on port %d in %s mode', this.address().port, app.settings.env);
+});
